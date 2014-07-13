@@ -1,0 +1,5 @@
+Dir_data <- dir("exdata-data-household_power_consumption", full.names = TRUE)
+energy_data <- read.csv(Dir_data, colClasses = "", sep = ";")
+our_data <- subset(energy_data, Date = "01/02/2007" | Date = "01/02/2007" )
+our_data$Global_active_power <- as.numeric(our_data$Global_active_power)
+hist(our_data$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (Kilowatts)", ylab = "Frequency")

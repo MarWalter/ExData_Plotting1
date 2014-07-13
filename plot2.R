@@ -1,0 +1,7 @@
+Dir_data <- dir("exdata-data-household_power_consumption", full.names = TRUE)
+energy_data <- read.csv(Dir_data, colClasses = "", sep = ";")
+our_data <- subset(energy_data, Date == "1/2/2007" | Date == "2/2/2007")
+our_data$Date <- paste(our_data$Date, our_data$Time)
+our_data$Date <- strptime(our_data$Date, "%d/%m/%Y %H:%M:%S")
+our_data$Global_active_power <- as.numeric(our_data$Global_active_power)
+plot(our_data$Date, our_data$Global_active_power, "l", xlab = "", ylab = "Global Active Power (kilowatts)")
